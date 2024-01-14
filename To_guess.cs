@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace wpfTest
-{
+
+{   
     internal class To_guess
     {
         public static string[] words = { "hello", "world", "test", "guess" };
@@ -17,7 +18,7 @@ namespace wpfTest
         public string InitializeWordToGuess()
         {
             this.wordAdvance = "";
-            int len = this.wordLenght;
+            int len = this.WordLenght;
             for (int i = 0; i < len; i++)
             {
                 this.wordAdvance += "_";
@@ -28,8 +29,13 @@ namespace wpfTest
         public bool IsWordFound()
         {
             if (this.wordAdvance == this.wordToGuess)
+            {
                 return true;
-            return false;
+            }               
+            else
+            {
+                return false;
+            }
         }
 
         public To_guess(string value)
@@ -41,7 +47,7 @@ namespace wpfTest
 
         public To_guess()
         {           
-            this.wordToGuess = wordToGuess[1];
+            this.wordToGuess = words[1];
             InitializeWordToGuess();
             this.nbTry = 0;
         }
@@ -63,7 +69,7 @@ namespace wpfTest
             set { this.wordAdvance = value; }
         }
 
-        public int wordLenght
+        public int WordLenght
         {
             get { return WordToGuess.Length; }
         }
