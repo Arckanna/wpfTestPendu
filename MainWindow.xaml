@@ -7,6 +7,45 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Margin="20,20,0,0" >Mot à deviner</Label>
+            <Label Grid.Row="1" Name ="word_to_guess_label"  Margin="20,20,0,0" ></Label>
+            <Label Grid.Row="3"  Margin="20,20,0,0"></Label>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" Name="propose_letter_textbox" Margin="20,20,0,20"></TextBox>
+                <Button  Grid.Column="1" Click="Button_Try_Click" Margin="20,20,0,20" Content="Try !" />
+            </Grid>
+            
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0"  Margin="20,20,0,0">Lettres deja essayés :</Label>
+            <Label Grid.Row="1" Margin="20,20,0,0" Name="already_tried_letters"></Label>
+            <Label Grid.Row="3" Margin="20,20,0,0" x:Name="counter_text">Tentavies restantes : </Label>
+            <Label Grid.Row="4" Margin="20,20,0,0" x:Name="counter" ></Label>
 
+        </Grid>
     </Grid>
 </Window>
