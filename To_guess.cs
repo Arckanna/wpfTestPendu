@@ -9,7 +9,7 @@ namespace wpfTest
 {   
     internal class To_guess
     {
-        public static string[] words = { "hello", "world", "test", "guess" };
+        public static string[] words = { "aquarium", "archipel", "banquise", "batterie", "brocante", "brouhaha","objectif","scorpion", "toujours","hautbois" };
         private string wordToGuess;
         private char letterProposed;
         private string wordAdvance;
@@ -47,7 +47,9 @@ namespace wpfTest
 
         public To_guess()
         {           
-            this.wordToGuess = words[1];
+            Random random = new Random();
+            int index = random.Next(words.Length);
+            this.wordToGuess = words[index];
             InitializeWordToGuess();
             this.nbTry = 0;
         }
