@@ -6,29 +6,28 @@ using System.Threading.Tasks;
 
 namespace wpfTest
 
-{   
-    internal class To_guess
+{   public class ToFind
     {
         public static string[] words = { "aquarium", "archipel", "banquise", "batterie", "brocante", "brouhaha","objectif","scorpion", "toujours","hautbois" };
-        private string wordToGuess;
-        private char letterProposed;
+        private string wordToFind;
+        private string letterProposed;
         private string wordAdvance;
         private int nbTry;
 
-        public string InitializeWordToGuess()
+        public string InitializeWordToFind()
         {
             this.wordAdvance = "";
             int len = this.WordLenght;
             for (int i = 0; i < len; i++)
             {
-                this.wordAdvance += "_";
+                this.wordAdvance += "_ ";
             }
             return this.wordAdvance;
         }   
 
         public bool IsWordFound()
         {
-            if (this.wordAdvance == this.wordToGuess)
+            if (this.wordAdvance == this.wordToFind)
             {
                 return true;
             }               
@@ -38,48 +37,48 @@ namespace wpfTest
             }
         }
 
-        public To_guess(string value)
+        public ToFind(string value)
         {
-            this.wordToGuess = value;
-            InitializeWordToGuess();
+            this.wordToFind = value;
+            InitializeWordToFind();
             this.nbTry = 0;
         }
 
-        public To_guess()
+        public ToFind()
         {           
             Random random = new Random();
             int index = random.Next(words.Length);
-            this.wordToGuess = words[index];
-            InitializeWordToGuess();
+            this.wordToFind = words[index];
+            InitializeWordToFind();
             this.nbTry = 0;
         }
 
         public int NbTry {
-            get { return this.nbTry; }
-            set { this.nbTry = value; }
+            get { return nbTry; }
+            set { nbTry = value; }
         }
 
-        public string WordToGuess
+        public string WordToFind
         {
-            get { return this.wordToGuess; }
-            set { this.wordToGuess = value; }
+            get { return wordToFind; }
+            set { wordToFind = value; }
         }
 
         public string WordAdvance
         {
-            get { return this.wordAdvance; }
-            set { this.wordAdvance = value; }
+            get { return wordAdvance; }
+            set { wordAdvance = value; }
         }
 
         public int WordLenght
         {
-            get { return WordToGuess.Length; }
+            get { return WordToFind.Length; }
         }
 
-        public char LetterProposed
+        public string LetterProposed
         {
-            get { return this.letterProposed; }
-            set { this.letterProposed = value; }
+            get { return letterProposed; }
+            set { letterProposed = value; }
         }
 
     }

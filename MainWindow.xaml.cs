@@ -18,25 +18,25 @@ namespace wpfTest
     public partial class MainWindow : Window
     {
 
-        To_guess toGuess;
+        ToFind toFind;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            toGuess = new To_guess();
-            wordToGuess.Content = toGuess.InitializeWordToGuess();
-            nbTry.Content = (10-toGuess.NbTry).ToString();
+            toFind = new ToFind();
+            wordToFind.Content = toFind.InitializeWordToFind();
+            nbTry.Content = (10-toFind.NbTry).ToString();
         }
 
         public string changeAdvanceWord(string newChange)
         {
             string newAdvanceWord = "";
-            for (int i = 0; i < toGuess.WordLenght; i++)
+            for (int i = 0; i < toFind.WordLenght; i++)
             {
-                if (toGuess.WordAdvance[i] != '_')
+                if (toFind.WordAdvance[i] != '_')
                 {
-                    newAdvanceWord += toGuess.WordAdvance[i];
+                    newAdvanceWord += toFind.WordAdvance[i];
                 }
                 else if (newChange[i] != '_')
                 {
@@ -54,16 +54,21 @@ namespace wpfTest
         public List<int> All_Indexes_Of()
         {
             List<int> allIndexes = new List<int>();
-            for (int i = 0; i < toGuess.WordLenght; i++)
-            {
-                if (toGuess.WordToGuess[i] == toGuess.LetterProposed)
+            for (int i = 0; i < toFind.WordLenght; i++)
+            {   
+                string bouh = toFind.WordToFind[i].ToString();
+                string bouh2 = toFind.LetterProposed.ToString();
+
+                if (bouh == bouh2)
+                {                 
+                }
+                else
                 {
-                    
                     allIndexes.Add(i);
                 }
                 Console.WriteLine("Letter found at index " + i);
-                Console.WriteLine("Letter to find : " + toGuess.WordToGuess[i]);
-                Console.WriteLine("Letter proposed : " + toGuess.LetterProposed);
+                Console.WriteLine("Letter to find : " + toFind.WordToFind[i]);
+                Console.WriteLine("Letter proposed : " + toFind.LetterProposed);
             }
             return allIndexes;
         }
@@ -72,15 +77,15 @@ namespace wpfTest
         {
             bool result = false;
 
-            string letterProposed = proposeLetter.Text;
+           toFind.LetterProposed = proposeLetter.Text;
 
-            if (letterProposed.Length > 1)
+            if (toFind.LetterProposed.Length > 1)
             {
                 MessageBox.Show("Please enter only one letter");
                 result = false;
                 return result;
             }
-            else if (letterProposed.Length == 0)
+            else if (toFind.LetterProposed.Length == 0)
             {
                 MessageBox.Show("Please enter a letter");
                 result = false;
@@ -94,11 +99,11 @@ namespace wpfTest
                 {
                     result = true;
                     string new_str = "";
-                    for (int i = 0; i < toGuess.WordLenght; i++)
+                    for (int i = 0; i < toFind.WordLenght; i++)
                     {
                         if (allIndexes.Contains(i))
                         {
-                            new_str += toGuess.WordToGuess[i];
+                            new_str += toFind.WordToFind[i];
                         }
                         else
                         {
@@ -106,18 +111,18 @@ namespace wpfTest
                         }
                     }
 
-                    toGuess.WordAdvance = changeAdvanceWord(new_str);
-                    wordToGuess.Content = toGuess.WordAdvance;
+                    toFind.WordAdvance = changeAdvanceWord(new_str);
+                    wordToFind.Content = toFind.WordAdvance;
 
                 }
                 else
                 {
-                    toGuess.NbTry += 1;
+                    toFind.NbTry += 1;
                 }
 
                 
 
-                nbTry.Content = (10 - toGuess.NbTry).ToString();
+                nbTry.Content = (10 - toFind.NbTry).ToString();
 
                 proposeLetter.Text = "";
             }            
@@ -130,12 +135,12 @@ namespace wpfTest
 
         public void Check_Victory_Defeat()
         {
-            if (toGuess.IsWordFound())
+            if (toFind.IsWordFound())
             {
                 MessageBox.Show("You won !");
                 this.Close();
             }
-            else if (toGuess.NbTry == 10)
+            else if (toFind.NbTry == 10)
             {
                 MessageBox.Show("You lost !");
                 this.Close();
