@@ -60,15 +60,10 @@ namespace wpfTest
                 string bouh2 = toFind.LetterProposed.ToString();
 
                 if (bouh == bouh2)
-                {                 
-                }
-                else
-                {
+                {          
                     allIndexes.Add(i);
                 }
-                Console.WriteLine("Letter found at index " + i);
-                Console.WriteLine("Letter to find : " + toFind.WordToFind[i]);
-                Console.WriteLine("Letter proposed : " + toFind.LetterProposed);
+           
             }
             return allIndexes;
         }

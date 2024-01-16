@@ -20,7 +20,7 @@ namespace wpfTest
             int len = this.WordLenght;
             for (int i = 0; i < len; i++)
             {
-                this.wordAdvance += "_ ";
+                this.wordAdvance += "_";
             }
             return this.wordAdvance;
         }   
